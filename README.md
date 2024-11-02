@@ -343,6 +343,7 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 
 ````
 **Month to Month Debt to Income Rate growth**
+
 Objective: Tracking Month-over-Month (MoM) Debt-to-Income (DTI) Ratio growth helps Liberty Bank measure changes in borrowers' debt burden relative to income, identify trends in financial health, and evaluate lending policy effectiveness to mitigate risk and ensure responsible lending.
 
 ````sql
@@ -368,6 +369,17 @@ SELECT
 FROM previous_mtd, mtd;
 
 ````
+
+## GOOD AND BAD LOAN METRICS
+good loan is characterized by a status of "fully paid" or "current," indicating that the borrower is meeting their repayment obligations promptly. Conversely, a bad loan is defined as having a status of "charged off," signifying that the lender has deemed the loan uncollectible and has written it off as a loss.
+
+
+## Good Loan Metrics
+
+** Good laon Applicants**
+Objective:
+
+
 
 
 
