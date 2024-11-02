@@ -1,7 +1,8 @@
 # Data Exploration and Visualization
+
 ## Liberty Bank Loan
 
-## 🧾 Table of Contents
+##  Table of Contents
 - [Business Task](#business-task)
 - [Methodology](#methodology)
 - [Data Exploration](#data-exploration)
@@ -37,7 +38,7 @@ This structured report will equip us with the necessary information to ensure ou
 
 ## Data Source
 
-Bank Loan data :The primary data used for this analysis"Bankloandata.csv" file, containg detailed information about each sale made by the company
+Financial Loan data: The primary data used for this analysis"Financial_loan.csv" file, contains detailed information about each sale made by the company
 
 ## Methodology
 
@@ -68,6 +69,7 @@ Bank Loan data :The primary data used for this analysis"Bankloandata.csv" file, 
 - Data Visualization in Tableau: Create intuitive visualizations and dashboards to represent findings and facilitate data-driven decision-making.
 
   ## Data Exploration
+  
   ### Column Dictionary
 
 1.  Loan ID: Unique identifier for each loan application or account. Banks use it to track and manage loans.
@@ -80,7 +82,7 @@ Bank Loan data :The primary data used for this analysis"Bankloandata.csv" file, 
 
 5.  Grade: Represents credit risk classification. Banks use it to price loans and manage risk.
 
-6.  Sub Grade: Further refines risk assessment within a grade. Banks tailor interest rates accordingly.
+6.  Sub-Grade: Further refines risk assessment within a grade. Banks tailor interest rates accordingly.
 
 7.  Home Ownership: Indicates housing status. Banks assess collateral availability and borrower stability.
 
@@ -113,174 +115,257 @@ Bank Loan data :The primary data used for this analysis"Bankloandata.csv" file, 
 
 ### Data Exploration
 
-**Step 1: Yearly Sales Trend Analysis**
-Objective: Analyze sales revenue trends over the years to identify growth patterns and any potential seasonality in sales.
+### Loan Application Metrics
+
+**Total Loan Application**
+
+Objective: Tracking total loan applications helps Liberty Bank understand loan demand, identify trends, and make informed decisions about marketing and resource allocation. It also evaluates the effectiveness of loan products and campaigns.
 
 ````sql
-SELECT YEAR(orderdate) AS Year, 
-       SUM(sales) AS TotalSales
-FROM [dbo].[sales_data_sample]
-GROUP BY YEAR(orderdate)
-ORDER BY Year;
+SELECT COUNT(*) AS Total_Application
+	FROM [dbo].[bank_loan];
 
 ````
 
-**2.Monthly Sales Trend**
-Objective: Examine monthly sales data to detect monthly patterns and trends.
+**Month-to-Date Total Loan Applicant**
+
+Objective: Tracking Month-to-Date (MTD) loan applications provides real-time insights into current trends, enabling Liberty Bank to monitor performance and make timely adjustments to enhance loan offerings and customer engagement..
 
 ````sql
-SELECT YEAR(orderdate) AS Year, 
-       MONTH(orderdate) AS Month, 
-       SUM(sales) AS TotalSales
-FROM [dbo].[sales_data_sample]
-GROUP BY YEAR(orderdate), MONTH(orderdate)
-ORDER BY Year, Month;
+ SELECT COUNT(*) AS MTD_Total_Loan_Applications
+FROM [portfolio].[dbo].[bank_loan]
+WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])), 0)
+  AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) + 1, 0);
 ````
 
-**3. Which month had the highest sales within a given year? What was the total revenue for that month?**
+**Month to Month Total Loan Application percentage growth**
+
+Objective: Tracking Month-over-Month (MoM) total loan application percentage growth helps Liberty Bank measure changes in loan applications, identify growth trends, and assess marketing effectiveness.
 
 ````sql
-SELECT MONTH_ID, SUM(sales) AS Revenue, COUNT(ORDERNUMBER) AS Frequency
-FROM [PortfolioDB].[dbo].[sales_data_sample]
-WHERE YEAR_ID = 2004  -- Change year to see the rest
-GROUP BY MONTH_ID
-ORDER BY Revenue DESC;
-
-````
-
-**4. whats Products sell most in the month of November?**
-
-````sql
-SELECT MONTH_ID, PRODUCTLINE, SUM(sales) AS Revenue, COUNT(ORDERNUMBER) AS OrderCount
-FROM [dbo].[sales_data_sample]
-WHERE YEAR_ID = 2004 AND MONTH_ID = 11  --change year to see the rest
-GROUP BY MONTH_ID, PRODUCTLINE
-ORDER BY Revenue DESC;
-
-````
-
-**5. Grouping by PRODUCTLINE and sorting by revenue**
-
-````sql
-SELECT PRODUCTLINE, SUM(sales) AS Revenue
-FROM [dbo].[sales_data_sample]
-GROUP BY PRODUCTLINE
-ORDER BY Revenue DESC;
-
-````
-
-**6. Grouping by CITY and sorting by revenue**
-
-````sql
-SELECT city, SUM(sales) AS Revenue
-FROM [PortfolioDB].[dbo].[sales_data_sample]
-GROUP BY city
-ORDER BY Revenue DESC;
-
-````
-**7. Grouping by DEAlSIZE and sorting by revenue**
-
-````sql
-SELECT DEALSIZE, SUM(sales) AS Revenue
-FROM [PortfolioDB].[dbo].[sales_data_sample]
-GROUP BY DEALSIZE
-ORDER BY Revenue DESC;
-
-````
-**8. Grouping by TERRITORY and sorting by revenue**
-
-````sql
-SELECT TERRITORY, SUM(sales) AS Revenue
-FROM [PortfolioDB].[dbo].[sales_data_sample]
-GROUP BY TERRITORY
-ORDER BY Revenue DESC;
-
-````
-
-**9. Grouping by STATUS and sorting by revenue**
-
-````sql
-SELECT STATUS, SUM(sales) AS Revenue
-FROM [PortfolioDB].[dbo].[sales_data_sample]
-GROUP BY STATUS
-ORDER BY Revenue DESC;
-
-````
-**10. Top Customers**
-
-````sql
-SELECT customername, SUM(sales) AS TotalSales, COUNT(ORDERLINENUMBER) AS PurchaseFrequency
-FROM [dbo].[sales_data_sample]
-GROUP BY customername
-ORDER BY TotalSales DESC, PurchaseFrequency DESC;
-
-````
-**11. Customer Segmentation**
-
-````sql
-DROP TABLE IF EXISTS #rfm;
-
-WITH rfm AS (
-    SELECT CUSTOMERNAME,
-           SUM(sales) AS MonetaryValue,
-           AVG(sales) AS AvgMonetaryValue,
-           COUNT(ORDERNUMBER) AS Frequency,
-           MAX(ORDERDATE) AS last_order_date,
-           (SELECT MAX(ORDERDATE) FROM [dbo].[sales_data_sample]) AS max_order_date,
-           DATEDIFF(DD, MAX(ORDERDATE), (SELECT MAX(ORDERDATE) FROM [dbo].[sales_data_sample])) AS Recency
-    FROM [PortfolioDB].[dbo].[sales_data_sample]
-    GROUP BY CUSTOMERNAME
+WITH previous_mtd AS (
+    SELECT COUNT(*) AS PMTD_Total_Loan_Applications
+    FROM [portfolio].[dbo].[bank_loan]
+    WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0,(SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) - 1, 0)
+      AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0,(SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])), 0)
 ),
-rfm_calc AS (
-    SELECT r.*,
-           NTILE(4) OVER (ORDER BY Recency DESC) AS rfm_recency,
-           NTILE(4) OVER (ORDER BY Frequency) AS rfm_frequency,
-           NTILE(4) OVER (ORDER BY MonetaryValue) AS rfm_monetary
-    FROM rfm r
+mtd AS (
+    SELECT COUNT(*) AS MTD_Total_Loan_Applications
+    FROM [portfolio].[dbo].[bank_loan]
+    WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])), 0)
+      AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0,(SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) + 1, 0)
 )
-SELECT c.*, 
-       rfm_recency + rfm_frequency + rfm_monetary AS rfm_cell,
-       CAST(rfm_recency AS VARCHAR) + CAST(rfm_frequency AS VARCHAR) + CAST(rfm_monetary AS VARCHAR) AS rfm_cell_string
-INTO #rfm
-FROM rfm_calc c;
-
-SELECT CUSTOMERNAME, 
-       rfm_recency, 
-       rfm_frequency, 
-       rfm_monetary,
-       CASE 
-           WHEN rfm_cell_string IN ('111', '112', '121', '122', '123', '132', '211', '212', '114', '141') THEN 'lost_customers'
-           WHEN rfm_cell_string IN ('133', '134', '143', '244', '334', '343', '344', '144') THEN 'slipping away, cannot lose'
-           WHEN rfm_cell_string IN ('311', '411', '331') THEN 'new customers'
-           WHEN rfm_cell_string IN ('222', '223', '233', '322') THEN 'potential churners'
-           WHEN rfm_cell_string IN ('323', '333', '321', '422', '332', '432') THEN 'active'
-           WHEN rfm_cell_string IN ('433', '434', '443', '444') THEN 'loyal'
-       END AS rfm_segment
-FROM #rfm;
+SELECT 
+    previous_mtd.PMTD_Total_Loan_Applications,
+    mtd.MTD_Total_Loan_Applications,
+    CASE 
+        WHEN mtd.MTD_Total_Loan_Applications = 0 THEN 0
+        ELSE ((mtd.MTD_Total_Loan_Applications - previous_mtd.PMTD_Total_Loan_Applications) * 100.0 / previous_mtd.PMTD_Total_Loan_Applications)
+    END AS Percentage_Change
+FROM previous_mtd, mtd;
 
 ````
-** 12.the Two Most Frequently Purchased Product Pairings**
+
+### Money Loaned Metrics
+
+**Total Money Loaned to Applicant**
+
+Objective: This metric is essential for understanding the overall lending volume and the bank's financial commitment to borrowers. It provides insights into loan portfolio growth and helps assess the bank's lending capacity and risk exposure
 
 ````sql
-SELECT DISTINCT OrderNumber, 
-    STUFF((
-        SELECT ',' + PRODUCTCODE
-        FROM [dbo].[sales_data_sample] p
-        WHERE ORDERNUMBER IN (
-            SELECT ORDERNUMBER
-            FROM (
-                SELECT ORDERNUMBER, COUNT(*) rn
-                FROM [PortfolioDB].[dbo].[sales_data_sample]
-                WHERE STATUS = 'Shipped'
-                GROUP BY ORDERNUMBER
-            ) m
-            WHERE rn = 2
-        )
-        AND p.ORDERNUMBER = s.ORDERNUMBER
-        FOR XML PATH('')
-    ), 1, 1, '') AS ProductCodes
-FROM [dbo].[sales_data_sample] s
-ORDER BY ProductCodes DESC;
+SELECT SUM(loan_amount) AS Total_Application
+	FROM [dbo].[bank_loan];
+
+````
+
+**Month to Date Total Loaned to  applicant**
+
+Objective: Tracking the Month-to-Date (MTD) Total Amount Loaned to Applicants provides real-time insights into current lending activity, helping Liberty Bank monitor performance and adjust strategies to meet financial targets and borrower needs.
+
+````sql
+SELECT SUM(loan_amount) AS MTD_Total_Loan_Applications
+FROM [portfolio].[dbo].[bank_loan]
+WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])), 0)
+  AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) + 1, 0);
+
+````
+
+**Month to Month Total Loan Amount percentage growth**
+
+Objective: Tracking Month-over-Month (MoM) Total Loan Amount percentage growth measures changes in the total loan amount disbursed each month, helping Liberty Bank identify trends, evaluate strategy effectiveness, and optimize loan distribution.
+
+````sql
+WITH previous_mtd AS (
+    SELECT SUM(loan_amount) AS PMTD_Total_Loan_Amount
+    FROM [portfolio].[dbo].[bank_loan]
+    WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0,(SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) - 1, 0)
+      AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0,(SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])), 0) --- previous Month
+),
+mtd AS (
+    SELECT SUM(loan_amount) AS MTD_Total_Loan_Amount
+    FROM [portfolio].[dbo].[bank_loan]
+    WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])), 0)
+      AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0,(SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) + 1, 0)
+)
+SELECT 
+    previous_mtd.PMTD_Total_Loan_Amount,
+    mtd.MTD_Total_Loan_Amount,
+    CASE 
+        WHEN mtd.MTD_Total_Loan_Amount = 0 THEN 0
+        ELSE ((mtd.MTD_Total_Loan_Amount - previous_mtd.PMTD_Total_Loan_Amount) * 100.0 / previous_mtd.PMTD_Total_Loan_Amount)
+    END AS Percentage_Change
+FROM previous_mtd, mtd;
+
+````
+
+### Payment Received
+
+
+**Total Payment Received from Applicants**
+
+ Objective: Tracking Total Payments Received from Applicants measures the inflow of funds from borrowers, helping Liberty Bank monitor cash flow, assess loan repayment effectiveness, and ensure financial stability.
+ 
+````sql
+
+SELECT SUM(total_payment) AS Total_Application
+	FROM [dbo].[bank_loan];
+
+````
+
+**Month-Date Total Payment Received from Applicants**
+
+Objectives: Tracking Month-to-Date (MTD) Total Payments Received from Applicants provides current insights into repayment trends, helping Liberty Bank monitor cash flow and evaluate collection strategy effectiveness in real time.
+
+````sql
+SELECT SUM(total_payment) AS MTD_Total_Money_Recieved
+FROM [portfolio].[dbo].[bank_loan]
+WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])), 0)
+  AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) + 1, 0);
+
+````
+
+**Month to Month Total Money Received  percentage growth***
+
+Objective: Tracking Month-over-Month (MoM) Total Money Received percentage growth helps Liberty Bank measure changes in repayments, identify trends, and evaluate collection strategy effectiveness.
+
+````sql
+ WITH previous_mtd AS (
+    SELECT SUM(total_payment) AS PMTD_Total_Money_Recieved
+    FROM [portfolio].[dbo].[bank_loan]
+    WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0,(SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) - 1, 0)
+      AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0,(SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])), 0) --- previous Month
+),
+mtd AS (
+    SELECT SUM(total_payment) AS MTD_Total_Money_Recieved
+    FROM [portfolio].[dbo].[bank_loan]
+    WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])), 0)
+      AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0,(SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) + 1, 0)
+)
+SELECT 
+    previous_mtd.PMTD_Total_Money_Recieved,
+    mtd.MTD_Total_Money_Recieved,
+    CASE 
+        WHEN mtd.MTD_Total_Money_Recieved = 0 THEN 0
+        ELSE ((mtd.MTD_Total_Money_Recieved - previous_mtd.PMTD_Total_Money_Recieved) * 100.0 / previous_mtd.PMTD_Total_Money_Recieved)
+    END AS Percentage_Change
+FROM previous_mtd, mtd;
+
+````
+
+### Interest Rate
+
+** Average Interest Rate **
+
+Objective: Tracking the Average Interest Rate helps Liberty Bank understand borrowing costs for customers, monitor loan product competitiveness, and assess pricing strategies to ensure profitability and attract borrowers.
+
+````sql
+SELECT AVG(int_rate) * 100 AS Avg_int
+	FROM [dbo].[bank_loan]
+
+````
+**Month-to-Date Average Interest Rate**
+
+Objective: Tracking the Month-to-Date (MTD) Average Interest Rate helps Liberty Bank monitor the current borrowing costs for customers, evaluate interest rate strategies, and make adjustments to remain competitive and profitable.
+
+````sql
+ SELECT AVG(int_rate)*100 AS MTD_Average_interest_Rate
+FROM [portfolio].[dbo].[bank_loan]
+WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])), 0)
+  AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) + 1, 0);
+
+````
+**Month to Month Average interest Rate growth**
+
+Objective: Tracking Month-over-Month (MoM) Average Interest Rate growth helps Liberty Bank measure changes in average interest rates monthly, identify trends, and evaluate interest rate strategy effectiveness.
+
+````sql
+WITH previous_mtd AS (
+    SELECT AVG(int_rate) AS PMTD_Average_interest_Rate
+    FROM [portfolio].[dbo].[bank_loan]
+    WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0,(SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) - 1, 0)
+      AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0,(SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])), 0) --- previous Month
+),
+mtd AS (
+    SELECT AVG(int_rate) AS MTD_Average_interest_Rate
+    FROM [portfolio].[dbo].[bank_loan]
+    WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])), 0)
+      AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0,(SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) + 1, 0)
+)
+SELECT 
+    previous_mtd.PMTD_Average_interest_Rate,
+    mtd.MTD_Average_interest_Rate,
+    CASE 
+        WHEN mtd.MTD_Average_interest_Rate = 0 THEN 0
+        ELSE ((mtd.MTD_Average_interest_Rate - previous_mtd.PMTD_Average_interest_Rate) * 100.0 / previous_mtd.PMTD_Average_interest_Rate)
+    END AS Percentage_Change
+FROM previous_mtd, mtd;
+
+### Debt to Income Rate
+
+** Average Debt to Income Rate**
+
+Objective: Tracking the Debt-to-Income (DTI) Ratio helps Liberty Bank assess borrowers' ability to repay debts, ensuring responsible lending and protecting both the bank and borrowers' financial health.
+
+````sql
+SELECT AVG(dti) * 100 AS Avg_dti
+	FROM [dbo].[bank_loan]
+
+````
+**Month to Date Debt to Income Rate**
+
+Objective: Tracking the Month-to-Date (MTD) Debt-to-Income (DTI) Ratio helps Liberty Bank evaluate borrowers' current financial health, making informed lending decisions to mitigate risk and ensure responsible lending.
+
+````sql
+  SELECT AVG(dti)*100 AS MTD_Debt_to_Income_Rate
+FROM [portfolio].[dbo].[bank_loan]
+WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])), 0)
+  AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) + 1, 0);
+
+````
+**Month to Month Debt to Income Rate growth**
+Objective: Tracking Month-over-Month (MoM) Debt-to-Income (DTI) Ratio growth helps Liberty Bank measure changes in borrowers' debt burden relative to income, identify trends in financial health, and evaluate lending policy effectiveness to mitigate risk and ensure responsible lending.
+
+````sql
+WITH previous_mtd AS (
+    SELECT AVG(dti) AS PMTD_Debt_to_Income_Rate
+    FROM [portfolio].[dbo].[bank_loan]
+    WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0,(SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) - 1, 0)
+      AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0,(SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])), 0) --- previous Month
+),
+mtd AS (
+    SELECT AVG(dti) AS MTD_Debt_to_Income_Rate
+    FROM [portfolio].[dbo].[bank_loan]
+    WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])), 0)
+      AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0,(SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) + 1, 0)
+)
+SELECT 
+    previous_mtd.PMTD_Debt_to_Income_Rate,
+    mtd.MTD_Debt_to_Income_Rate,
+    CASE 
+        WHEN mtd.MTD_Debt_to_Income_Rate = 0 THEN 0
+        ELSE ((mtd.MTD_Debt_to_Income_Rate - previous_mtd.PMTD_Debt_to_Income_Rate) * 100.0 / previous_mtd.PMTD_Debt_to_Income_Rate)
+    END AS Percentage_Change
+FROM previous_mtd, mtd;
 
 ````
 
