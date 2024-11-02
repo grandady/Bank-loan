@@ -1,16 +1,31 @@
-# Data Exploration
+# Data Exploration and Visualization
+## Liberty Bank Loan
 
-## Bank Loan
+## 🧾 Table of Contents
+- [Business Task](#business-task)
+- [Methodology](#methodology)
+- [Data Exploration](#data-exploration)
+- [Visualization](#visualization)
+- [Recommendations](#recommendations)
+- [Limitations](#limitations)
+- [References](#references)
+***
 
-To effectively monitor and assess our bank's lending activities and performance, we need to create a comprehensive Bank Loan Report. This report will provide critical insights into key loan-related metrics and their changes over time, supporting data-driven decisions, tracking the health of our loan portfolio, and identifying trends to inform our lending strategies.
+## Liberty  Bank Loan
+
+Liberty Bank is a reputable financial institution that empowers individuals and businesses through innovative banking solutions. With a focus on customer service and community growth, it offers a variety of loans, accounts, and investment options. The bank emphasizes financial inclusion and responsible lending to ensure the well-being of its clients and foster economic stability.
+
 
 ## Business Tasks
+
+To effectively monitor and assess our bank's lending activities and performance, we must create a comprehensive Bank Loan Report. This report will provide critical insights into key loan-related metrics and their changes over time, supporting data-driven decisions, tracking the health of our loan portfolio, and identifying trends to inform our lending strategies.
+
 
 ## Key Performance Indicators (KPIs) Requirements:
 
 1. Total Loan Applications: Calculate the total number of loan applications received during a specified period. Monitor the Month-to-Date (MTD) Loan Applications and track Month-over-Month (MoM) changes.
 
-2. Total Funded Amount: Determine the total amount of funds disbursed as loans. Monitor the MTD Total Funded Amount and analyze MoM changes in this metric.
+2. Total Funded Amount: Determine the total funds disbursed as loans. Monitor the MTD Total Funded Amount and analyze MoM changes in this metric.
 
 3. Total Amount Received: Track the total amount received from borrowers to assess cash flow and loan repayment. Analyze the MTD Total Amount Received and observe MoM changes.
 
