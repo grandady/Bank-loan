@@ -1,11 +1,10 @@
 # Data Exploration
 
-
-## Business Task
-
 ## Bank Loan
 
 To effectively monitor and assess our bank's lending activities and performance, we need to create a comprehensive Bank Loan Report. This report will provide critical insights into key loan-related metrics and their changes over time, supporting data-driven decisions, tracking the health of our loan portfolio, and identifying trends to inform our lending strategies.
+
+## Business Tasks
 
 ## Key Performance Indicators (KPIs) Requirements:
 
