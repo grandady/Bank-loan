@@ -320,9 +320,11 @@ SELECT
     END AS Percentage_Change
 FROM previous_mtd, mtd;
 
+
+
 ### Debt to Income Rate
 
-** Average Debt to Income Rate**
+**Average Debt to Income Rate**
 
 Objective: Tracking the Debt-to-Income (DTI) Ratio helps Liberty Bank assess borrowers' ability to repay debts, ensuring responsible lending and protecting both the bank and borrowers' financial health.
 
@@ -331,6 +333,8 @@ SELECT AVG(dti) * 100 AS Avg_dti
 	FROM [dbo].[bank_loan]
 
 ````
+
+
 **Month to Date Debt to Income Rate**
 
 Objective: Tracking the Month-to-Date (MTD) Debt-to-Income (DTI) Ratio helps Liberty Bank evaluate borrowers' current financial health, making informed lending decisions to mitigate risk and ensure responsible lending.
@@ -578,4 +582,68 @@ ORDER BY Total_Loan_Applications  DESC
 
 **Answer**
 The primary purpose for loan collection is debt consolidation, which accounts for the highest number of loan applicants at 18,214. The total money loaned for this purpose stands at 232,459,675, with a total of 253,801,871 received. The second most common loan purpose is credit card refinancing, with 4,998 applicants, 58,885,175 in total money loaned, and 65,214,084 in total money received. In contrast, renewable energy is the least common loan purpose, with only 94 applicants, 845,750 in total money loaned, and 898,931 in total money received.
+
+
+
+## Visualization
+
+
+
+## Recommendations
+
+
+Given the data, here are some recommendations for Liberty Bank to improve its loan portfolio management:
+
+1. Enhance Risk Assessment: Given the high average interest rates and debt-to-income ratios in bad loans, strengthening the risk assessment process could help in identifying potential defaults earlier.
+
+2. Adjust Lending Criteria: Reevaluate and possibly tighten lending criteria for high-risk applicants to reduce the number of non-performing loans.
+
+3. Focus on Debt Consolidation: Since debt consolidation is the most common loan purpose, consider offering more tailored and competitive products in this category to attract quality borrowers.
+
+4. Regional Strategies: With California and New York leading in both loan applications and total money, it's clear these regions are crucial. Implement specific marketing and risk management strategies for these high-performing states.
+
+5. Promote Renewable Energy Loans: Given that renewable energy loans are the least common, creating incentives or awareness campaigns could boost this segment and diversify the loan portfolio.
+
+6. Optimize Loan Terms: Analyze the performance of the different loan terms (36 months vs. 60 months) to understand borrower preferences and risk profiles better. This could help in designing more attractive loan products.
+
+7. Improve Recovery Strategies: Given the disparity between total money loaned and received in bad loans, enhance strategies for recovering bad debt to mitigate losses.
+
+8. By implementing these strategies, Liberty Bank can not only minimize risks but also maximize opportunities within its loan portfolio
+
+
+## Limitations
+
+A few limitations to consider:
+
+1. Data Quality: Inconsistent or inaccurate data can skew analysis, leading to misguided decisions. Ensuring data integrity is crucial.
+
+2. Economic Factors: External economic conditions can impact loan performance, making it harder to predict and manage risk accurately.
+
+3. Regulatory Changes: Changes in banking regulations or policies can affect loan practices and require adjustments to strategies.
+
+4. Borrower Behavior: Unpredictable changes in borrower behavior can impact loan repayment, complicating risk assessment and mitigation efforts.
+
+5. Technological Limitations: Reliance on technology for data analysis and risk assessment can be limited by the accuracy and capabilities of the tools and systems used.
+
+By recognizing these limitations, Liberty Bank can take proactive measures to mitigate risks and improve its loan portfolio management.
+
+
+## References
+
+
+- Abadie, Alberto, and Guido W Imbens. 2016. "Matching on the Estimated Propensity Score." Econometrica 84 (2): 781-807.
+
+- Allison, Paul D, and Richard P Waterman. 2002. "Fixed-Effects Negative Binomial Regression Models." Sociological Methodology 32 (1): 247-65.
+
+- Anderson, J. R. 1990. The Adaptive Character of Thought. Lawrence Erlbaum.
+
+- Bender, E. M., Gebru, T., McMillan-Major, A., \& Shmitchell, S. 2021. "On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?" Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency, 610-623.
+
+- Box, G. E. P. 1976. "Science and Statistics." In Robustness in Statistics, Elsevier.
+
+- James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. 2013. An Introduction to Statistical Learning. Springer.
+
+- Kluyver, Thomas, Benjamin Ragan-Kelley, Fernando Pérez, Brian Granger, Matthias Bussonnier, Jonathan Frederic, Kyle Kelley, et al. 2016. "Jupyter Notebooks: A Publishing Format for Reproducible Computational Workflows." In Positioning and Power in Academic Publishing: Players, Agents and Agendas: Proceedings of the 20th International Conference on Electronic Publishing, Vol. 87, Amsterdam: IOS Press.
+
+- Leek, Jeffrey, and Roger Peng. 2015. "What Is the Question?" Science 347 (6228): 1314-15.
 
