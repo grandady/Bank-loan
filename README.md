@@ -274,7 +274,7 @@ FROM previous_mtd, mtd;
 
 ### Interest Rate
 
-** Average Interest Rate **
+**Average Interest Rate**
 
 Objective: Tracking the Average Interest Rate helps Liberty Bank understand borrowing costs for customers, monitor loan product competitiveness, and assess pricing strategies to ensure profitability and attract borrowers.
 
@@ -376,12 +376,206 @@ good loan is characterized by a status of "fully paid" or "current," indicating 
 
 ## Good Loan Metrics
 
-** Good laon Applicants**
-Objective:
+**Good loan Applicants**
+
+Objective: Identifying a "good loan applicant" helps Liberty Bank minimize risks, maintain a healthy loan portfolio, and ensure responsible lending practices.
+ 
+
+````sql
+SELECT COUNT(*) AS Good_loan_Applicant
+	FROM [dbo].[bank_loan]
+	WHERE loan_status IN ('Fully Paid','Current');
+
+
+````
+
+**Good loan Total Amount Loaned**
+
+Objective: Tracking the Good Loan Total Amount Loaned helps Liberty Bank evaluate its lending success, identify trends in loan performance, and ensure a healthy loan portfolio.
+ 
+
+````sql
+SELECT SUM(loan_amount) AS Good_loan_Total_Amount_Loaned
+	FROM [dbo].[bank_loan]
+	WHERE loan_status IN ('Fully Paid','Current');
+
+````
+
+**Good loan Total Amount Received**
+
+Objective: Tracking the Good Loan Total Amount Received helps Liberty Bank maintain cash flow and ensure financial stability.
+ 
+
+````sql
+SELECT SUM(total_payment) AS Good_loan_Total_payment
+	FROM [dbo].[bank_loan]
+	WHERE loan_status IN ('Fully Paid','Current');
+
+````
+
+**Good loan Average Interest Rate**
+
+Objective: Tracking the Good Loan Average Interest Rate helps Liberty Bank set competitive and profitable borrowing costs.
+ 
+
+````sql
+SELECT Avg(int_rate)*100 AS Good_loan_Average_interest
+	FROM [dbo].[bank_loan]
+	WHERE loan_status IN ('Fully Paid','Current');
+
+````
+**Good loan Average Debt to Income Rate**
+
+Objective: Tracking the Good Loan Average Debt-to-Income (DTI) Rate helps Liberty Bank assess reliable borrowers' financial health and ensure responsible lending.
+ 
+
+````sql
+SELECT Avg(dti)*100 AS Good_loan_Average_dti
+	FROM [dbo].[bank_loan]
+	WHERE loan_status IN ('Fully Paid','Current');
 
 
 
+## Bad Loan Metrics
 
 
+**Bad loan Applicants**
 
-an
+Objective: Tracking bad loan applicants helps Liberty Bank identify high-risk individuals and adjust lending criteria to minimize financial losses.
+ 
+
+````sql
+SELECT COUNT(*) AS Bad_loan_Applicant
+	FROM [dbo].[bank_loan]
+	WHERE loan_status NOT IN ('Fully Paid','Current');
+ 
+
+````
+
+**Bad loan Total Amount Loaned**
+
+Objective: Tracking the Bad Loan Total Amount Loaned helps Liberty Bank assess non-performing loans, understand financial impact, and develop strategies to mitigate losses.
+ 
+
+````sql
+SELECT SUM(loan_amount) AS Bad_loan_Total_Amount_Loaned
+	FROM [dbo].[bank_loan]
+	WHERE loan_status NOT IN ('Fully Paid','Current');
+````
+
+**Bad loan Total Amount Received**
+
+Objective: Tracking the Bad Loan Total Amount Received helps Liberty Bank assess the effectiveness of recovery strategies and minimize losses.
+ 
+
+````sql
+SELECT SUM(total_payment) AS Bad_loan_Total_payment
+	FROM [dbo].[bank_loan]
+	WHERE loan_status NOT IN ('Fully Paid','Current');
+
+````
+
+**Bad loan Average Interest Rate**
+
+Objective: Tracking the Bad Loan Average Interest Rate helps Liberty Bank understand and mitigate high-risk lending costs
+ 
+
+````sql
+SELECT Avg(int_rate)*100 AS Bad_loan_Average_interest
+	FROM [dbo].[bank_loan]
+	WHERE loan_status NOT IN ('Fully Paid','Current');
+
+````
+**bad loan Average Debt to Income Rate**
+
+Objective: Tracking the Bad Loan Average Debt-to-Income (DTI) Rate helps Liberty Bank manage risk by assessing high-risk borrowers' financial stability.
+ 
+
+````sql
+SELECT Avg(dti)*100 AS Bad_loan_Average_dti
+	FROM [dbo].[bank_loan]
+	WHERE loan_status NOT IN ('Fully Paid','Current');
+
+````
+
+
+## Loan Status
+Objective: Tracking loan status helps Liberty Bank monitor the current state of each loan, whether it's active, paid off, delinquent, or in default. This allows the bank to make informed decisions, manage risk, allocate resources effectively, and maintain a healthy loan portfolio by identifying and addressing potential issues early.
+
+````sql
+SELECT
+        loan_status,
+        COUNT(id) AS LoanCount,
+        SUM(total_payment) AS Total_Amount_Received,
+        SUM(loan_amount) AS Total_Funded_Amount,
+        AVG(int_rate * 100) AS Interest_Rate,
+        AVG(dti * 100) AS DTI
+    FROM
+        [dbo].[bank_loan]
+    GROUP BY
+        loan_status
+
+````
+
+## State
+
+
+Objective: The objective of tracking the state is to categorize and analyze loans based on their geographic location. This helps Liberty Bank understand regional trends, tailor lending strategies to specific areas, and address localized risks or opportunities.
+
+````sql
+SELECT 
+	address_state AS AD_STATE, 
+	COUNT(id) AS Total_Loan_Applications,
+	SUM(loan_amount) AS Total_Funded_Amount,
+	SUM(total_payment) AS Total_Amount_Received
+FROM [dbo].[bank_loan]
+GROUP BY address_state
+ORDER BY Total_Loan_Applications DESC
+
+````
+
+
+*Answer*
+
+California leads with the highest total loan applications at 6,894, nearly double that of the second-highest state, New York, which has 3,701 applications. California also tops the charts with the highest total money loaned, amounting to 78,484,125, followed by New York at 42,077,050. Furthermore, California received the highest total amount at 83,901,234, with New York in second place at 46,108,181. On the other end of the spectrum, Maine has the lowest loan applications at 3, with a total money loaned of 9,200 and a total money received of 10,808.
+
+## Term
+
+Objective: Tracking the loan term helps Liberty Bank understand the duration over which different loans are repaid. This enables the bank to manage cash flows, assess the risk associated with different loan durations, and tailor lending products to meet the needs of various customer segments.
+
+````sql
+SELECT 
+	term AS Term, 
+	COUNT(id) AS Total_Loan_Applications,
+	SUM(loan_amount) AS Total_Funded_Amount,
+	SUM(total_payment) AS Total_Amount_Received
+FROM [dbo].[bank_loan]
+GROUP BY term
+ORDER BY Total_Loan_Applications DESC
+
+```
+
+**Answer**
+
+There are two loan terms: 36 months and 60 months. The 36-month term had a total of 28,237 loan applications, while the 60-month term had 10,339 applications. In terms of total money loaned, the 36-month term accounted for 273,041,225, whereas the 60-month term amounted to 162,715,850. Regarding total money received, the 36-month term garnered 294,709,458, while the 60-month term received 178,361,475
+
+## Purpose
+
+Objective: Tracking the loan purpose helps Liberty Bank understand why borrowers are taking out loans. This insight allows the bank to tailor products to meet specific needs, evaluate the risk associated with different loan purposes, and develop targeted marketing and lending strategies.
+
+````sql
+
+SELECT 
+	purpose AS purpose, 
+	COUNT(id) AS Total_Loan_Applications,
+	SUM(loan_amount) AS Total_Funded_Amount,
+	SUM(total_payment) AS Total_Amount_Received
+FROM [dbo].[bank_loan]
+GROUP BY purpose
+ORDER BY Total_Loan_Applications  DESC
+
+````
+
+**Answer**
+The primary purpose for loan collection is debt consolidation, which accounts for the highest number of loan applicants at 18,214. The total money loaned for this purpose stands at 232,459,675, with a total of 253,801,871 received. The second most common loan purpose is credit card refinancing, with 4,998 applicants, 58,885,175 in total money loaned, and 65,214,084 in total money received. In contrast, renewable energy is the least common loan purpose, with only 94 applicants, 845,750 in total money loaned, and 898,931 in total money received.
+
