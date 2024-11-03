@@ -666,6 +666,10 @@ SELECT
 
 ````
 
+![status](https://github.com/user-attachments/assets/4db377c1-0896-4721-9ff2-d9d7a0c02afe)
+
+
+
 ## State
 
 **Objective:** Tracking the state is to categorize and analyze loans based on their geographic location. This helps Liberty Bank understand regional trends, tailor lending strategies to specific areas, and address localized risks or opportunities.
@@ -682,10 +686,18 @@ ORDER BY Total_Loan_Applications DESC
 
 ````
 
+**Answer:**
 
-**Answer**
+_This screenshot is only for reference and doesn’t contain all entries due to the issue of space_
+
+![loan state](https://github.com/user-attachments/assets/e46f4d69-2d80-40ea-84b5-432ef8c0bcfd)
+
+
+
 
 California has the highest total loan applications at 6,894, nearly double that of the second-highest state, New York, which has 3,701 applications. California also tops the charts with the highest total money loaned, amounting to 78,484,125, followed by New York at 42,077,050. Furthermore, California received the highest total amount at 83,901,234, with New York in second place at 46,108,181. On the other end of the spectrum, Maine has the lowest loan applications at 3, with a total money loaned of 9,200 and a total cash received of 10,808.
+
+
 
 
 
@@ -707,7 +719,13 @@ ORDER BY Total_Loan_Applications DESC
 
 **Answer**
 
+![loan term](https://github.com/user-attachments/assets/826a80dd-b625-4ad9-bf8e-93e0ff498826)
+
+
+
 There are two loan terms: 36 months and 60 months. The 36-month term had a total of 28,237 loan applications, while the 60-month term had 10,339 applications. In terms of total money loaned, the 36-month term accounted for 273,041,225, whereas the 60-month term amounted to 162,715,850. Regarding total money received, the 36-month term garnered 294,709,458, while the 60-month term received 178,361,475
+
+
 
 
 
@@ -728,7 +746,11 @@ ORDER BY Total_Loan_Applications  DESC
 
 ````
 
-**Answer**
+**Answer:**
+
+![loan purpose](https://github.com/user-attachments/assets/e1005ee6-600c-4d7e-9eda-fbb72f4cf53e)
+
+
 The primary purpose for loan collection is debt consolidation, which accounts for the highest number of loan applicants at 18,214. The total money loaned for this purpose stands at 232,459,675, with a total of 253,801,871 received. The second most common loan purpose is credit card refinancing, with 4,998 applicants, 58,885,175 in total money loaned, and 65,214,084 in total money received. In contrast, renewable energy is the least common loan purpose, with only 94 applicants, 845,750 in total money loaned, and 898,931 in total money received.
 
 
@@ -737,8 +759,18 @@ The primary purpose for loan collection is debt consolidation, which accounts fo
 
 
 
+![overviewss](https://github.com/user-attachments/assets/c3425fd8-5b0a-4910-999d-7a5c1de28bd8)
+
+**This dashboard provides a comprehensive overview of bank loan performance**
 
 
+
+
+
+![summaryyyy](https://github.com/user-attachments/assets/d41c0032-3932-4f11-bfe9-1a73e3284efe)
+
+
+**This dashboard provides a comprehensive summary of bank loan performance**
 
 
 
