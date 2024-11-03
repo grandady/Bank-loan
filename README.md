@@ -127,7 +127,9 @@ SELECT COUNT(*) AS Total_Application
 
 ````
 
-**Answer** The total number of loan applications received is 38,576 
+**Answer** 
+
+The total number of loan applications received is 38,576 
 
 - **Month-to-Date Total Loan Applicant**
 
@@ -141,7 +143,9 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 
 ````
 
-**Answer** The Month-to-Date total number of loan applicants is 4,314
+**Answer**
+
+The Month-to-Date total number of loan applicants is 4,314
 
 - **Month to Month Total Loan Application percentage growth**
 
@@ -171,7 +175,9 @@ FROM previous_mtd, mtd;
 
 ````
 
-**Answer**. The Month-to-Month total loan application percentage growth is 6.91%.
+**Answer**. 
+
+The Month-to-Month total loan application percentage growth is 6.91%.
 
 
 ### Money Loaned Metrics
@@ -186,7 +192,9 @@ SELECT SUM(loan_amount) AS Total_Application
 
 ````
 
-**Answer** The total amount of money loaned is 435,757,075.
+**Answer** 
+
+The total amount of money loaned is $ 435,757,075.
 
 - **Month to Date Total Loaned to  applicant**
 
@@ -200,7 +208,9 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 
 ````
 
-**Answer** The Month-to-Date total amount loaned is 53,981,425.
+**Answer** 
+
+The Month-to-Date total amount loaned is $ 53,981,425.
 
 - Month to Month Total Loan Amount percentage growth**
 
@@ -246,7 +256,9 @@ SELECT SUM(total_payment) AS Total_Application
 
 ````
 
-**Answer**The total amount of payment received is 473,070,933.
+**Answer**
+
+The total amount of payment received is $ 473,070,933.
 
 - **Month-Date Total Payment Received from Applicants**
 
@@ -260,7 +272,9 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 
 ````
 
-**Answer**The Month-to-Date total payment received is 58,074,380.
+**Answer**
+
+The Month-to-Date total payment received is $ 58,074,380.
 
 - **Month to Month Total Money Received  percentage growth***
 
@@ -290,7 +304,9 @@ FROM previous_mtd, mtd;
 
 ````
 
-**Answer**The Month-to-Month total money received percentage growth is 15.84%.
+**Answer**
+
+The Month-to-Month total money received percentage growth is 15.84%.
 
 ### Interest Rate
 
@@ -318,7 +334,9 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 
 ````
 
-**Answer**The Month-to-Date average interest rate is 12.36%.
+**Answer**
+
+The Month-to-Date average interest rate is 12.36%.
 
 - **Month to Month Average interest Rate growth**
 
@@ -348,7 +366,9 @@ FROM previous_mtd, mtd;
 
 
 ````
-- **Answer**The Month-to-Month average interest rate growth stands at 3.47%
+- **Answer**
+-
+- The Month-to-Month average interest rate growth stands at 3.47%
 
 
 ### Debt to Income Rate
@@ -362,7 +382,9 @@ SELECT AVG(dti) * 100 AS Avg_dti
 	FROM [dbo].[bank_loan]
 
 ````
-**Answer**The average Debt-to-Income rate is 13.33%.
+**Answer**
+
+The average Debt-to-Income rate is 13.33%.
 
 - **Month-to-Date Debt to Income Rate**
 
@@ -375,7 +397,9 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
   AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) + 1, 0);
 
 ````
-**Answer**The Month-to-Date Debt-to-Income rate is 13.67%.
+**Answer**
+
+The Month-to-Date Debt-to-Income rate is 13.67%.
 
 - **Month to Month Debt to Income Rate growth**
 
@@ -404,7 +428,9 @@ SELECT
 FROM previous_mtd, mtd;
 
 ````
-**Answer**The Month-to-Month Debt-to-Income rate growth is 2.73%.
+**Answer**
+
+The Month-to-Month Debt-to-Income rate growth is 2.73%.
 
 ## GOOD AND BAD LOAN METRICS
 good loan is characterized by a status of "fully paid" or "current," indicating that the borrower is meeting their repayment obligations promptly. Conversely, a bad loan is defined as having a status of "charged off," signifying that the lender has deemed the loan uncollectible and has written it off as a loss.
@@ -425,7 +451,9 @@ SELECT COUNT(*) AS Good_loan_Applicant
 
 ````
 
-**Answer**The number of good loan applicants stands at 33,243.
+**Answer**
+
+The number of good loan applicants stands at 33,243.
 
 - **Good loan Total Amount Loaned**
 
@@ -439,7 +467,9 @@ SELECT SUM(loan_amount) AS Good_loan_Total_Amount_Loaned
 
 ````
 
-**Answer**The total amount loaned to good loan applicants is 370,224,850.
+**Answer**
+
+The total amount loaned to good loan applicants is $ 370,224,850.
 
 - **Good loan Total Amount Received**
 
@@ -453,7 +483,9 @@ SELECT SUM(total_payment) AS Good_loan_Total_payment
 
 ````
 
-**Answer**The total amount received from good loan applicants is 435,786,170.
+**Answer**
+
+The total amount received from good loan applicants is $ 435,786,170.
 
 - **Good loan Average Interest Rate**
 
@@ -467,7 +499,9 @@ SELECT Avg(int_rate)*100 AS Good_loan_Average_interest
 
 ````
 
-**Answer**The average interest rate for good loan applicants is 11.76%.
+**Answer**
+
+The average interest rate for good loan applicants is 11.76%.
 
 
 - **Good loan Average Debt to Income Rate**
@@ -482,7 +516,9 @@ SELECT Avg(dti)*100 AS Good_loan_Average_dti
 
 ````
 
-**Answer**The average Debt-to-Income rate for good loan applicants is 13.22%.
+**Answer**
+
+The average Debt-to-Income rate for good loan applicants is 13.22%.
 
 
 ## Bad Loan Metrics
@@ -500,7 +536,9 @@ SELECT COUNT(*) AS Bad_loan_Applicant
  
 
 ````
-**Answer** The number of bad loan applicants is 5,333.
+**Answer** 
+
+The number of bad loan applicants is 5,333.
 
 - **Bad loan Total Amount Loaned**
 
@@ -515,7 +553,9 @@ SELECT SUM(loan_amount) AS Bad_loan_Total_Amount_Loaned
 
 ````
 
-**Answer** The total amount loaned to bad loan applicants is 65,532,225.
+**Answer** 
+
+The total amount loaned to bad loan applicants is $ 65,532,225.
 
 
 - **Bad loan Total Amount Received**
@@ -530,7 +570,9 @@ SELECT SUM(total_payment) AS Bad_loan_Total_payment
 
 ````
 
-**Answer** The total amount received from bad loan applicants is 37,284,763.
+**Answer** 
+
+The total amount received from bad loan applicants is $ 37,284,763.
 
 
 - **Bad loan Average Interest Rate**
@@ -545,7 +587,9 @@ SELECT Avg(int_rate)*100 AS Bad_loan_Average_interest
 
 ````
 
-**Answer** The average interest rate for bad loan applicants is 13.88%.
+**Answer** 
+
+The average interest rate for bad loan applicants is 13.88%.
 
 
 - **Bad loan Average Debt to Income Rate**
@@ -560,7 +604,9 @@ SELECT Avg(dti)*100 AS Bad_loan_Average_dti
 
 ````
 
-**Answer** The average Debt-to-Income rate for bad loan applicants is 14.00%
+**Answer** 
+
+The average Debt-to-Income rate for bad loan applicants is 14.00%
 
 
 ## Loan Status
@@ -650,6 +696,12 @@ The primary purpose for loan collection is debt consolidation, which accounts fo
 
 
 ## Visualization
+
+
+
+
+
+
 
 
 
