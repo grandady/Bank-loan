@@ -129,7 +129,7 @@ SELECT COUNT(*) AS Total_Application
 
 **Answer** The total number of loan applications received is 38,576 
 
-**Month-to-Date Total Loan Applicant**
+- **Month-to-Date Total Loan Applicant**
 
 Objective: Tracking Month-to-Date (MTD) loan applications provides real-time insights into current trends, enabling Liberty Bank to monitor performance and make timely adjustments to enhance loan offerings and customer engagement..
 
@@ -143,7 +143,7 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 
 **Answer** The Month-to-Date total number of loan applicants is 4,314
 
-**Month to Month Total Loan Application percentage growth**
+- **Month to Month Total Loan Application percentage growth**
 
 Objective: Tracking Month-over-Month (MoM) total loan application percentage growth helps Liberty Bank measure changes in loan applications, identify growth trends, and assess marketing effectiveness.
 
@@ -176,7 +176,7 @@ FROM previous_mtd, mtd;
 
 ### Money Loaned Metrics
 
-**Total Money Loaned to Applicant**
+- **Total Money Loaned to Applicant**
 
 Objective: This metric is essential for understanding the overall lending volume and the bank's financial commitment to borrowers. It provides insights into loan portfolio growth and helps assess the bank's lending capacity and risk exposure
 
@@ -188,7 +188,7 @@ SELECT SUM(loan_amount) AS Total_Application
 
 **Answer** The total amount of money loaned is 435,757,075.
 
-**Month to Date Total Loaned to  applicant**
+- **Month to Date Total Loaned to  applicant**
 
 Objective: Tracking the Month-to-Date (MTD) Total Amount Loaned to Applicants provides real-time insights into current lending activity, helping Liberty Bank monitor performance and adjust strategies to meet financial targets and borrower needs.
 
@@ -202,7 +202,7 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 
 **Answer** The Month-to-Date total amount loaned is 53,981,425.
 
-**Month to Month Total Loan Amount percentage growth**
+- Month to Month Total Loan Amount percentage growth**
 
 Objective: Tracking Month-over-Month (MoM) Total Loan Amount percentage growth measures changes in the total loan amount disbursed each month, helping Liberty Bank identify trends, evaluate strategy effectiveness, and optimize loan distribution.
 
@@ -235,7 +235,7 @@ FROM previous_mtd, mtd;
 ### Payment Received
 
 
-**Total Payment Received from Applicants**
+- **Total Payment Received from Applicants**
 
  Objective: Tracking Total Payments Received from Applicants measures the inflow of funds from borrowers, helping Liberty Bank monitor cash flow, assess loan repayment effectiveness, and ensure financial stability.
  
@@ -248,7 +248,7 @@ SELECT SUM(total_payment) AS Total_Application
 
 **Answer**The total amount of payment received is 473,070,933.
 
-**Month-Date Total Payment Received from Applicants**
+- **Month-Date Total Payment Received from Applicants**
 
 Objectives: Tracking Month-to-Date (MTD) Total Payments Received from Applicants provides current insights into repayment trends, helping Liberty Bank monitor cash flow and evaluate collection strategy effectiveness in real time.
 
@@ -262,7 +262,7 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 
 **Answer**The Month-to-Date total payment received is 58,074,380.
 
-**Month to Month Total Money Received  percentage growth***
+- **Month to Month Total Money Received  percentage growth***
 
 Objective: Tracking Month-over-Month (MoM) Total Money Received percentage growth helps Liberty Bank measure changes in repayments, identify trends, and evaluate collection strategy effectiveness.
 
@@ -294,7 +294,7 @@ FROM previous_mtd, mtd;
 
 ### Interest Rate
 
-**Average Interest Rate**
+- **Average Interest Rate**
 
 Objective: Tracking the Average Interest Rate helps Liberty Bank understand borrowing costs for customers, monitor loan product competitiveness, and assess pricing strategies to ensure profitability and attract borrowers.
 
@@ -306,7 +306,7 @@ SELECT AVG(int_rate) * 100 AS Avg_int
 
 **Answer**he average interest rate is 12.05%.
 
-**Month-to-Date Average Interest Rate**
+- **Month-to-Date Average Interest Rate**
 
 Objective: Tracking the Month-to-Date (MTD) Average Interest Rate helps Liberty Bank monitor the current borrowing costs for customers, evaluate interest rate strategies, and make adjustments to remain competitive and profitable.
 
@@ -320,7 +320,7 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 
 **Answer**The Month-to-Date average interest rate is 12.36%.
 
-**Month to Month Average interest Rate growth**
+- **Month to Month Average interest Rate growth**
 
 Objective: Tracking Month-over-Month (MoM) Average Interest Rate growth helps Liberty Bank measure changes in average interest rates monthly, identify trends, and evaluate interest rate strategy effectiveness.
 
@@ -348,7 +348,7 @@ FROM previous_mtd, mtd;
 
 
 ````
-**Answer**The Month-to-Month average interest rate growth stands at 3.47%
+- **Answer**The Month-to-Month average interest rate growth stands at 3.47%
 
 
 ### Debt to Income Rate
@@ -364,7 +364,7 @@ SELECT AVG(dti) * 100 AS Avg_dti
 ````
 **Answer**The average Debt-to-Income rate is 13.33%.
 
-**Month to Date Debt to Income Rate**
+- **Month to Date Debt to Income Rate**
 
 Objective: Tracking the Month-to-Date (MTD) Debt-to-Income (DTI) Ratio helps Liberty Bank evaluate borrowers' current financial health, making informed lending decisions to mitigate risk and ensure responsible lending.
 
@@ -377,7 +377,7 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 ````
 **Answer**The Month-to-Date Debt-to-Income rate is 13.67%.
 
-**Month to Month Debt to Income Rate growth**
+- **Month to Month Debt to Income Rate growth**
 
 Objective: Tracking Month-over-Month (MoM) Debt-to-Income (DTI) Ratio growth helps Liberty Bank measure changes in borrowers' debt burden relative to income, identify trends in financial health, and evaluate lending policy effectiveness to mitigate risk and ensure responsible lending.
 
@@ -412,7 +412,7 @@ good loan is characterized by a status of "fully paid" or "current," indicating 
 
 ## Good Loan Metrics
 
-**Good loan Applicants**
+- **Good loan Applicants**
 
 Objective: Identifying a "good loan applicant" helps Liberty Bank minimize risks, maintain a healthy loan portfolio, and ensure responsible lending practices.
  
@@ -427,7 +427,7 @@ SELECT COUNT(*) AS Good_loan_Applicant
 
 **Answer**The number of good loan applicants stands at 33,243.
 
-**Good loan Total Amount Loaned**
+- **Good loan Total Amount Loaned**
 
 Objective: Tracking the Good Loan Total Amount Loaned helps Liberty Bank evaluate its lending success, identify trends in loan performance, and ensure a healthy loan portfolio.
  
@@ -441,7 +441,7 @@ SELECT SUM(loan_amount) AS Good_loan_Total_Amount_Loaned
 
 **Answer**The total amount loaned to good loan applicants is 370,224,850.
 
-**Good loan Total Amount Received**
+- **Good loan Total Amount Received**
 
 Objective: Tracking the Good Loan Total Amount Received helps Liberty Bank maintain cash flow and ensure financial stability.
  
@@ -455,7 +455,7 @@ SELECT SUM(total_payment) AS Good_loan_Total_payment
 
 **Answer**The total amount received from good loan applicants is 435,786,170.
 
-**Good loan Average Interest Rate**
+- **Good loan Average Interest Rate**
 
 Objective: Tracking the Good Loan Average Interest Rate helps Liberty Bank set competitive and profitable borrowing costs.
  
@@ -470,7 +470,7 @@ SELECT Avg(int_rate)*100 AS Good_loan_Average_interest
 **Answer**The average interest rate for good loan applicants is 11.76%.
 
 
-**Good loan Average Debt to Income Rate**
+- **Good loan Average Debt to Income Rate**
 
 Objective: Tracking the Good Loan Average Debt-to-Income (DTI) Rate helps Liberty Bank assess reliable borrowers' financial health and ensure responsible lending.
  
@@ -488,7 +488,7 @@ SELECT Avg(dti)*100 AS Good_loan_Average_dti
 ## Bad Loan Metrics
 
 
-**Bad loan Applicants**
+- **Bad loan Applicants**
 
 Objective: Tracking bad loan applicants helps Liberty Bank identify high-risk individuals and adjust lending criteria to minimize financial losses.
  
@@ -502,7 +502,7 @@ SELECT COUNT(*) AS Bad_loan_Applicant
 ````
 **Answer** The number of bad loan applicants is 5,333.
 
-**Bad loan Total Amount Loaned**
+- **Bad loan Total Amount Loaned**
 
 Objective: Tracking the Bad Loan Total Amount Loaned helps Liberty Bank assess non-performing loans, understand financial impact, and develop strategies to mitigate losses.
  
@@ -518,7 +518,7 @@ SELECT SUM(loan_amount) AS Bad_loan_Total_Amount_Loaned
 **Answer** The total amount loaned to bad loan applicants is 65,532,225.
 
 
-**Bad loan Total Amount Received**
+- **Bad loan Total Amount Received**
 
 Objective: Tracking the Bad Loan Total Amount Received helps Liberty Bank assess the effectiveness of recovery strategies and minimize losses.
  
@@ -533,7 +533,7 @@ SELECT SUM(total_payment) AS Bad_loan_Total_payment
 **Answer** The total amount received from bad loan applicants is 37,284,763.
 
 
-**Bad loan Average Interest Rate**
+- **Bad loan Average Interest Rate**
 
 Objective: Tracking the Bad Loan Average Interest Rate helps Liberty Bank understand and mitigate high-risk lending costs
  
@@ -548,7 +548,7 @@ SELECT Avg(int_rate)*100 AS Bad_loan_Average_interest
 **Answer** The average interest rate for bad loan applicants is 13.88%.
 
 
-**bad loan Average Debt to Income Rate**
+- **Bad loan Average Debt to Income Rate**
 
 Objective: Tracking the Bad Loan Average Debt-to-Income (DTI) Rate helps Liberty Bank manage risk by assessing high-risk borrowers' financial stability.
  
@@ -564,6 +564,7 @@ SELECT Avg(dti)*100 AS Bad_loan_Average_dti
 
 
 ## Loan Status
+
 Objective: Tracking loan status helps Liberty Bank monitor the current state of each loan, whether it's active, paid off, delinquent, or in default. This allows the bank to make informed decisions, manage risk, allocate resources effectively, and maintain a healthy loan portfolio by identifying and addressing potential issues early.
 
 ````sql
@@ -582,7 +583,6 @@ SELECT
 ````
 
 ## State
-
 
 Objective: Tracking the state is to categorize and analyze loans based on their geographic location. This helps Liberty Bank understand regional trends, tailor lending strategies to specific areas, and address localized risks or opportunities.
 
