@@ -119,7 +119,7 @@ Financial Loan data: The primary data used for this analysis"Financial_loan.csv"
 
 - **Total Loan Application**
 
-Objective: Tracking total loan applications helps Liberty Bank understand loan demand, identify trends, and make informed decisions about marketing and resource allocation. It also evaluates the effectiveness of loan products and campaigns.
+**Objective:** Tracking total loan applications helps Liberty Bank understand loan demand, identify trends, and make informed decisions about marketing and resource allocation. It also evaluates the effectiveness of loan products and campaigns.
 
 ````sql
 SELECT COUNT(*) AS Total_Application
@@ -131,7 +131,7 @@ SELECT COUNT(*) AS Total_Application
 
 - **Month-to-Date Total Loan Applicant**
 
-Objective: Tracking Month-to-Date (MTD) loan applications provides real-time insights into current trends, enabling Liberty Bank to monitor performance and make timely adjustments to enhance loan offerings and customer engagement..
+**Objective:** Tracking Month-to-Date (MTD) loan applications provides real-time insights into current trends, enabling Liberty Bank to monitor performance and make timely adjustments to enhance loan offerings and customer engagement..
 
 ````sql
  SELECT COUNT(*) AS MTD_Total_Loan_Applications
@@ -145,7 +145,7 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 
 - **Month to Month Total Loan Application percentage growth**
 
-Objective: Tracking Month-over-Month (MoM) total loan application percentage growth helps Liberty Bank measure changes in loan applications, identify growth trends, and assess marketing effectiveness.
+**Objective:** Tracking Month-over-Month (MoM) total loan application percentage growth helps Liberty Bank measure changes in loan applications, identify growth trends, and assess marketing effectiveness.
 
 ````sql
 WITH previous_mtd AS (
@@ -178,7 +178,7 @@ FROM previous_mtd, mtd;
 
 - **Total Money Loaned to Applicant**
 
-Objective: This metric is essential for understanding the overall lending volume and the bank's financial commitment to borrowers. It provides insights into loan portfolio growth and helps assess the bank's lending capacity and risk exposure
+**Objective:** This metric is essential for understanding the overall lending volume and the bank's financial commitment to borrowers. It provides insights into loan portfolio growth and helps assess the bank's lending capacity and risk exposure
 
 ````sql
 SELECT SUM(loan_amount) AS Total_Application
@@ -190,7 +190,7 @@ SELECT SUM(loan_amount) AS Total_Application
 
 - **Month to Date Total Loaned to  applicant**
 
-Objective: Tracking the Month-to-Date (MTD) Total Amount Loaned to Applicants provides real-time insights into current lending activity, helping Liberty Bank monitor performance and adjust strategies to meet financial targets and borrower needs.
+**Objective:** Tracking the Month-to-Date (MTD) Total Amount Loaned to Applicants provides real-time insights into current lending activity, helping Liberty Bank monitor performance and adjust strategies to meet financial targets and borrower needs.
 
 ````sql
 SELECT SUM(loan_amount) AS MTD_Total_Loan_Applications
@@ -204,7 +204,7 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 
 - Month to Month Total Loan Amount percentage growth**
 
-Objective: Tracking Month-over-Month (MoM) Total Loan Amount percentage growth measures changes in the total loan amount disbursed each month, helping Liberty Bank identify trends, evaluate strategy effectiveness, and optimize loan distribution.
+**Objective:** Tracking Month-over-Month (MoM) Total Loan Amount percentage growth measures changes in the total loan amount disbursed each month, helping Liberty Bank identify trends, evaluate strategy effectiveness, and optimize loan distribution.
 
 ````sql
 WITH previous_mtd AS (
@@ -237,7 +237,7 @@ FROM previous_mtd, mtd;
 
 - **Total Payment Received from Applicants**
 
- Objective: Tracking Total Payments Received from Applicants measures the inflow of funds from borrowers, helping Liberty Bank monitor cash flow, assess loan repayment effectiveness, and ensure financial stability.
+ **Objective:** Tracking Total Payments Received from Applicants measures the inflow of funds from borrowers, helping Liberty Bank monitor cash flow, assess loan repayment effectiveness, and ensure financial stability.
  
 ````sql
 
@@ -250,7 +250,7 @@ SELECT SUM(total_payment) AS Total_Application
 
 - **Month-Date Total Payment Received from Applicants**
 
-Objectives: Tracking Month-to-Date (MTD) Total Payments Received from Applicants provides current insights into repayment trends, helping Liberty Bank monitor cash flow and evaluate collection strategy effectiveness in real time.
+**Objectives:** Tracking Month-to-Date (MTD) Total Payments Received from Applicants provides current insights into repayment trends, helping Liberty Bank monitor cash flow and evaluate collection strategy effectiveness in real time.
 
 ````sql
 SELECT SUM(total_payment) AS MTD_Total_Money_Recieved
@@ -264,7 +264,7 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 
 - **Month to Month Total Money Received  percentage growth***
 
-Objective: Tracking Month-over-Month (MoM) Total Money Received percentage growth helps Liberty Bank measure changes in repayments, identify trends, and evaluate collection strategy effectiveness.
+**Objective:** Tracking Month-over-Month (MoM) Total Money Received percentage growth helps Liberty Bank measure changes in repayments, identify trends, and evaluate collection strategy effectiveness.
 
 ````sql
  WITH previous_mtd AS (
@@ -296,7 +296,7 @@ FROM previous_mtd, mtd;
 
 - **Average Interest Rate**
 
-Objective: Tracking the Average Interest Rate helps Liberty Bank understand borrowing costs for customers, monitor loan product competitiveness, and assess pricing strategies to ensure profitability and attract borrowers.
+**Objective:** Tracking the Average Interest Rate helps Liberty Bank understand borrowing costs for customers, monitor loan product competitiveness, and assess pricing strategies to ensure profitability and attract borrowers.
 
 ````sql
 SELECT AVG(int_rate) * 100 AS Avg_int
@@ -308,7 +308,7 @@ SELECT AVG(int_rate) * 100 AS Avg_int
 
 - **Month-to-Date Average Interest Rate**
 
-Objective: Tracking the Month-to-Date (MTD) Average Interest Rate helps Liberty Bank monitor the current borrowing costs for customers, evaluate interest rate strategies, and make adjustments to remain competitive and profitable.
+**Objective:** Tracking the Month-to-Date (MTD) Average Interest Rate helps Liberty Bank monitor the current borrowing costs for customers, evaluate interest rate strategies, and make adjustments to remain competitive and profitable.
 
 ````sql
  SELECT AVG(int_rate)*100 AS MTD_Average_interest_Rate
@@ -322,7 +322,7 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 
 - **Month to Month Average interest Rate growth**
 
-Objective: Tracking Month-over-Month (MoM) Average Interest Rate growth helps Liberty Bank measure changes in average interest rates monthly, identify trends, and evaluate interest rate strategy effectiveness.
+**Objective:** Tracking Month-over-Month (MoM) Average Interest Rate growth helps Liberty Bank measure changes in average interest rates monthly, identify trends, and evaluate interest rate strategy effectiveness.
 
 ````sql
 WITH previous_mtd AS (
@@ -355,7 +355,7 @@ FROM previous_mtd, mtd;
 
 **Average Debt to Income Rate**
 
-Objective: Tracking the Debt-to-Income (DTI) Ratio helps Liberty Bank assess borrowers' ability to repay debts, ensuring responsible lending and protecting both the bank and borrowers' financial health.
+**Objective:** Tracking the Debt-to-Income (DTI) Ratio helps Liberty Bank assess borrowers' ability to repay debts, ensuring responsible lending and protecting both the bank and borrowers' financial health.
 
 ````sql
 SELECT AVG(dti) * 100 AS Avg_dti
@@ -364,9 +364,9 @@ SELECT AVG(dti) * 100 AS Avg_dti
 ````
 **Answer**The average Debt-to-Income rate is 13.33%.
 
-- **Month to Date Debt to Income Rate**
+- **Month-to-Date Debt to Income Rate**
 
-Objective: Tracking the Month-to-Date (MTD) Debt-to-Income (DTI) Ratio helps Liberty Bank evaluate borrowers' current financial health, making informed lending decisions to mitigate risk and ensure responsible lending.
+**Objective:** Tracking the Month-to-Date (MTD) Debt-to-Income (DTI) Ratio helps Liberty Bank evaluate borrowers' current financial health, making informed lending decisions to mitigate risk and ensure responsible lending.
 
 ````sql
   SELECT AVG(dti)*100 AS MTD_Debt_to_Income_Rate
@@ -379,7 +379,7 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 
 - **Month to Month Debt to Income Rate growth**
 
-Objective: Tracking Month-over-Month (MoM) Debt-to-Income (DTI) Ratio growth helps Liberty Bank measure changes in borrowers' debt burden relative to income, identify trends in financial health, and evaluate lending policy effectiveness to mitigate risk and ensure responsible lending.
+**Objective:** Tracking Month-over-Month (MoM) Debt-to-Income (DTI) Ratio growth helps Liberty Bank measure changes in borrowers' debt burden relative to income, identify trends in financial health, and evaluate lending policy effectiveness to mitigate risk and ensure responsible lending.
 
 ````sql
 WITH previous_mtd AS (
@@ -414,7 +414,7 @@ good loan is characterized by a status of "fully paid" or "current," indicating 
 
 - **Good loan Applicants**
 
-Objective: Identifying a "good loan applicant" helps Liberty Bank minimize risks, maintain a healthy loan portfolio, and ensure responsible lending practices.
+**Objective:** Identifying a "good loan applicant" helps Liberty Bank minimize risks, maintain a healthy loan portfolio, and ensure responsible lending practices.
  
 
 ````sql
@@ -429,7 +429,7 @@ SELECT COUNT(*) AS Good_loan_Applicant
 
 - **Good loan Total Amount Loaned**
 
-Objective: Tracking the Good Loan Total Amount Loaned helps Liberty Bank evaluate its lending success, identify trends in loan performance, and ensure a healthy loan portfolio.
+**Objective:** Tracking the Good Loan Total Amount Loaned helps Liberty Bank evaluate its lending success, identify trends in loan performance, and ensure a healthy loan portfolio.
  
 
 ````sql
@@ -443,7 +443,7 @@ SELECT SUM(loan_amount) AS Good_loan_Total_Amount_Loaned
 
 - **Good loan Total Amount Received**
 
-Objective: Tracking the Good Loan Total Amount Received helps Liberty Bank maintain cash flow and ensure financial stability.
+**Objective:** Tracking the Good Loan Total Amount Received helps Liberty Bank maintain cash flow and ensure financial stability.
  
 
 ````sql
@@ -457,7 +457,7 @@ SELECT SUM(total_payment) AS Good_loan_Total_payment
 
 - **Good loan Average Interest Rate**
 
-Objective: Tracking the Good Loan Average Interest Rate helps Liberty Bank set competitive and profitable borrowing costs.
+**Objective:** Tracking the Good Loan Average Interest Rate helps Liberty Bank set competitive and profitable borrowing costs.
  
 
 ````sql
@@ -472,7 +472,7 @@ SELECT Avg(int_rate)*100 AS Good_loan_Average_interest
 
 - **Good loan Average Debt to Income Rate**
 
-Objective: Tracking the Good Loan Average Debt-to-Income (DTI) Rate helps Liberty Bank assess reliable borrowers' financial health and ensure responsible lending.
+**Objective:** Tracking the Good Loan Average Debt-to-Income (DTI) Rate helps Liberty Bank assess reliable borrowers' financial health and ensure responsible lending.
  
 
 ````sql
@@ -490,7 +490,7 @@ SELECT Avg(dti)*100 AS Good_loan_Average_dti
 
 - **Bad loan Applicants**
 
-Objective: Tracking bad loan applicants helps Liberty Bank identify high-risk individuals and adjust lending criteria to minimize financial losses.
+**Objective:** Tracking bad loan applicants helps Liberty Bank identify high-risk individuals and adjust lending criteria to minimize financial losses.
  
 
 ````sql
@@ -504,7 +504,7 @@ SELECT COUNT(*) AS Bad_loan_Applicant
 
 - **Bad loan Total Amount Loaned**
 
-Objective: Tracking the Bad Loan Total Amount Loaned helps Liberty Bank assess non-performing loans, understand financial impact, and develop strategies to mitigate losses.
+**Objective:** Tracking the Bad Loan Total Amount Loaned helps Liberty Bank assess non-performing loans, understand financial impact, and develop strategies to mitigate losses.
  
 
 ````sql
@@ -520,7 +520,7 @@ SELECT SUM(loan_amount) AS Bad_loan_Total_Amount_Loaned
 
 - **Bad loan Total Amount Received**
 
-Objective: Tracking the Bad Loan Total Amount Received helps Liberty Bank assess the effectiveness of recovery strategies and minimize losses.
+**Objective:** Tracking the Bad Loan Total Amount Received helps Liberty Bank assess the effectiveness of recovery strategies and minimize losses.
  
 
 ````sql
@@ -535,7 +535,7 @@ SELECT SUM(total_payment) AS Bad_loan_Total_payment
 
 - **Bad loan Average Interest Rate**
 
-Objective: Tracking the Bad Loan Average Interest Rate helps Liberty Bank understand and mitigate high-risk lending costs
+**Objective:** Tracking the Bad Loan Average Interest Rate helps Liberty Bank understand and mitigate high-risk lending costs
  
 
 ````sql
@@ -550,7 +550,7 @@ SELECT Avg(int_rate)*100 AS Bad_loan_Average_interest
 
 - **Bad loan Average Debt to Income Rate**
 
-Objective: Tracking the Bad Loan Average Debt-to-Income (DTI) Rate helps Liberty Bank manage risk by assessing high-risk borrowers' financial stability.
+**Objective:** Tracking the Bad Loan Average Debt-to-Income (DTI) Rate helps Liberty Bank manage risk by assessing high-risk borrowers' financial stability.
  
 
 ````sql
@@ -565,7 +565,7 @@ SELECT Avg(dti)*100 AS Bad_loan_Average_dti
 
 ## Loan Status
 
-Objective: Tracking loan status helps Liberty Bank monitor the current state of each loan, whether it's active, paid off, delinquent, or in default. This allows the bank to make informed decisions, manage risk, allocate resources effectively, and maintain a healthy loan portfolio by identifying and addressing potential issues early.
+**Objective:** Tracking loan status helps Liberty Bank monitor the current state of each loan, whether it's active, paid off, delinquent, or in default. This allows the bank to make informed decisions, manage risk, allocate resources effectively, and maintain a healthy loan portfolio by identifying and addressing potential issues early.
 
 ````sql
 SELECT
@@ -584,7 +584,7 @@ SELECT
 
 ## State
 
-Objective: Tracking the state is to categorize and analyze loans based on their geographic location. This helps Liberty Bank understand regional trends, tailor lending strategies to specific areas, and address localized risks or opportunities.
+**Objective:** Tracking the state is to categorize and analyze loans based on their geographic location. This helps Liberty Bank understand regional trends, tailor lending strategies to specific areas, and address localized risks or opportunities.
 
 ````sql
 SELECT 
@@ -607,7 +607,7 @@ California has the highest total loan applications at 6,894, nearly double that 
 
 ## Term
 
-Objective: Tracking the loan term helps Liberty Bank understand the duration over which different loans are repaid. This enables the bank to manage cash flows, assess the risk associated with different loan durations, and tailor lending products to meet the needs of various customer segments.
+**Objective:** Tracking the loan term helps Liberty Bank understand the duration over which different loans are repaid. This enables the bank to manage cash flows, assess the risk associated with different loan durations, and tailor lending products to meet the needs of various customer segments.
 
 ````sql
 
@@ -629,7 +629,7 @@ There are two loan terms: 36 months and 60 months. The 36-month term had a total
 
 ## Purpose
 
-Objective: Tracking the loan purpose helps Liberty Bank understand why borrowers are taking out loans. This insight allows the bank to tailor products to meet specific needs, evaluate the risk associated with different loan purposes, and develop targeted marketing and lending strategies.
+**Objective:** Tracking the loan purpose helps Liberty Bank understand why borrowers are taking out loans. This insight allows the bank to tailor products to meet specific needs, evaluate the risk associated with different loan purposes, and develop targeted marketing and lending strategies.
 
 ````sql
 
