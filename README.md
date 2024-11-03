@@ -117,6 +117,8 @@ Financial Loan data: The primary data used for this analysis"Financial_loan.csv"
 
 ### Loan Application Metrics
 
+
+
 - **Total Loan Application**
 
 **Objective:** Tracking total loan applications helps Liberty Bank understand loan demand, identify trends, and make informed decisions about marketing and resource allocation. It also evaluates the effectiveness of loan products and campaigns.
@@ -130,6 +132,8 @@ SELECT COUNT(*) AS Total_Application
 **Answer** 
 
 The total number of loan applications received is 38,576 
+
+
 
 - **Month-to-Date Total Loan Applicant**
 
@@ -146,6 +150,8 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 **Answer**
 
 The Month-to-Date total number of loan applicants is 4,314
+
+
 
 - **Month to Month Total Loan Application percentage growth**
 
@@ -182,6 +188,8 @@ The Month-to-Month total loan application percentage growth is 6.91%.
 
 ### Money Loaned Metrics
 
+
+
 - **Total Money Loaned to Applicant**
 
 **Objective:** This metric is essential for understanding the overall lending volume and the bank's financial commitment to borrowers. It provides insights into loan portfolio growth and helps assess the bank's lending capacity and risk exposure
@@ -195,6 +203,8 @@ SELECT SUM(loan_amount) AS Total_Application
 **Answer** 
 
 The total amount of money loaned is $ 435,757,075.
+
+
 
 - **Month to Date Total Loaned to  applicant**
 
@@ -211,6 +221,8 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 **Answer** 
 
 The Month-to-Date total amount loaned is $ 53,981,425.
+
+
 
 - Month to Month Total Loan Amount percentage growth**
 
@@ -242,6 +254,8 @@ FROM previous_mtd, mtd;
 
 **Answer** The Month-to-Month total loan amount percentage growth is 13.04%.
 
+
+
 ### Payment Received
 
 
@@ -260,6 +274,8 @@ SELECT SUM(total_payment) AS Total_Application
 
 The total amount of payment received is $ 473,070,933.
 
+
+
 - **Month-Date Total Payment Received from Applicants**
 
 **Objectives:** Tracking Month-to-Date (MTD) Total Payments Received from Applicants provides current insights into repayment trends, helping Liberty Bank monitor cash flow and evaluate collection strategy effectiveness in real time.
@@ -275,6 +291,8 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 **Answer**
 
 The Month-to-Date total payment received is $ 58,074,380.
+
+
 
 - **Month to Month Total Money Received  percentage growth***
 
@@ -308,6 +326,8 @@ FROM previous_mtd, mtd;
 
 The Month-to-Month total money received percentage growth is 15.84%.
 
+
+
 ### Interest Rate
 
 - **Average Interest Rate**
@@ -320,7 +340,11 @@ SELECT AVG(int_rate) * 100 AS Avg_int
 
 ````
 
-**Answer**he average interest rate is 12.05%.
+**Answer**
+
+The average interest rate is 12.05%.
+
+
 
 - **Month-to-Date Average Interest Rate**
 
@@ -337,6 +361,8 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 **Answer**
 
 The Month-to-Date average interest rate is 12.36%.
+
+
 
 - **Month to Month Average interest Rate growth**
 
@@ -367,8 +393,8 @@ FROM previous_mtd, mtd;
 
 ````
 - **Answer**
--
-- The Month-to-Month average interest rate growth stands at 3.47%
+
+ The Month-to-Month average interest rate growth stands at 3.47%
 
 
 ### Debt to Income Rate
@@ -401,6 +427,8 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
 
 The Month-to-Date Debt-to-Income rate is 13.67%.
 
+
+
 - **Month to Month Debt to Income Rate growth**
 
 **Objective:** Tracking Month-over-Month (MoM) Debt-to-Income (DTI) Ratio growth helps Liberty Bank measure changes in borrowers' debt burden relative to income, identify trends in financial health, and evaluate lending policy effectiveness to mitigate risk and ensure responsible lending.
@@ -431,6 +459,8 @@ FROM previous_mtd, mtd;
 **Answer**
 
 The Month-to-Month Debt-to-Income rate growth is 2.73%.
+
+
 
 ## GOOD AND BAD LOAN METRICS
 good loan is characterized by a status of "fully paid" or "current," indicating that the borrower is meeting their repayment obligations promptly. Conversely, a bad loan is defined as having a status of "charged off," signifying that the lender has deemed the loan uncollectible and has written it off as a loss.
@@ -540,6 +570,8 @@ SELECT COUNT(*) AS Bad_loan_Applicant
 
 The number of bad loan applicants is 5,333.
 
+
+
 - **Bad loan Total Amount Loaned**
 
 **Objective:** Tracking the Bad Loan Total Amount Loaned helps Liberty Bank assess non-performing loans, understand financial impact, and develop strategies to mitigate losses.
@@ -556,6 +588,8 @@ SELECT SUM(loan_amount) AS Bad_loan_Total_Amount_Loaned
 **Answer** 
 
 The total amount loaned to bad loan applicants is $ 65,532,225.
+
+
 
 
 - **Bad loan Total Amount Received**
@@ -592,6 +626,8 @@ SELECT Avg(int_rate)*100 AS Bad_loan_Average_interest
 The average interest rate for bad loan applicants is 13.88%.
 
 
+
+
 - **Bad loan Average Debt to Income Rate**
 
 **Objective:** Tracking the Bad Loan Average Debt-to-Income (DTI) Rate helps Liberty Bank manage risk by assessing high-risk borrowers' financial stability.
@@ -607,6 +643,8 @@ SELECT Avg(dti)*100 AS Bad_loan_Average_dti
 **Answer** 
 
 The average Debt-to-Income rate for bad loan applicants is 14.00%
+
+
 
 
 ## Loan Status
