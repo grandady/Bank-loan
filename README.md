@@ -117,7 +117,7 @@ Financial Loan data: The primary data used for this analysis"Financial_loan.csv"
 
 ### Loan Application Metrics
 
-**Total Loan Application**
+- **Total Loan Application**
 
 Objective: Tracking total loan applications helps Liberty Bank understand loan demand, identify trends, and make informed decisions about marketing and resource allocation. It also evaluates the effectiveness of loan products and campaigns.
 
@@ -126,6 +126,8 @@ SELECT COUNT(*) AS Total_Application
 	FROM [dbo].[bank_loan];
 
 ````
+
+**Answer** The total number of loan applications received is 38,576 
 
 **Month-to-Date Total Loan Applicant**
 
@@ -136,7 +138,10 @@ Objective: Tracking Month-to-Date (MTD) loan applications provides real-time ins
 FROM [portfolio].[dbo].[bank_loan]
 WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])), 0)
   AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) + 1, 0);
+
 ````
+
+**Answer** The Month-to-Date total number of loan applicants is 4,314
 
 **Month to Month Total Loan Application percentage growth**
 
@@ -166,6 +171,9 @@ FROM previous_mtd, mtd;
 
 ````
 
+**Answer**. The Month-to-Month total loan application percentage growth is 6.91%.
+
+
 ### Money Loaned Metrics
 
 **Total Money Loaned to Applicant**
@@ -178,6 +186,8 @@ SELECT SUM(loan_amount) AS Total_Application
 
 ````
 
+**Answer** The total amount of money loaned is 435,757,075.
+
 **Month to Date Total Loaned to  applicant**
 
 Objective: Tracking the Month-to-Date (MTD) Total Amount Loaned to Applicants provides real-time insights into current lending activity, helping Liberty Bank monitor performance and adjust strategies to meet financial targets and borrower needs.
@@ -189,6 +199,8 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
   AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) + 1, 0);
 
 ````
+
+**Answer** The Month-to-Date total amount loaned is 53,981,425.
 
 **Month to Month Total Loan Amount percentage growth**
 
@@ -218,6 +230,8 @@ FROM previous_mtd, mtd;
 
 ````
 
+**Answer** The Month-to-Month total loan amount percentage growth is 13.04%.
+
 ### Payment Received
 
 
@@ -232,6 +246,8 @@ SELECT SUM(total_payment) AS Total_Application
 
 ````
 
+**Answer**The total amount of payment received is 473,070,933.
+
 **Month-Date Total Payment Received from Applicants**
 
 Objectives: Tracking Month-to-Date (MTD) Total Payments Received from Applicants provides current insights into repayment trends, helping Liberty Bank monitor cash flow and evaluate collection strategy effectiveness in real time.
@@ -243,6 +259,8 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
   AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) + 1, 0);
 
 ````
+
+**Answer**The Month-to-Date total payment received is 58,074,380.
 
 **Month to Month Total Money Received  percentage growth***
 
@@ -272,6 +290,8 @@ FROM previous_mtd, mtd;
 
 ````
 
+**Answer**The Month-to-Month total money received percentage growth is 15.84%.
+
 ### Interest Rate
 
 **Average Interest Rate**
@@ -283,6 +303,9 @@ SELECT AVG(int_rate) * 100 AS Avg_int
 	FROM [dbo].[bank_loan]
 
 ````
+
+**Answer**he average interest rate is 12.05%.
+
 **Month-to-Date Average Interest Rate**
 
 Objective: Tracking the Month-to-Date (MTD) Average Interest Rate helps Liberty Bank monitor the current borrowing costs for customers, evaluate interest rate strategies, and make adjustments to remain competitive and profitable.
@@ -294,6 +317,9 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
   AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) + 1, 0);
 
 ````
+
+**Answer**The Month-to-Date average interest rate is 12.36%.
+
 **Month to Month Average interest Rate growth**
 
 Objective: Tracking Month-over-Month (MoM) Average Interest Rate growth helps Liberty Bank measure changes in average interest rates monthly, identify trends, and evaluate interest rate strategy effectiveness.
@@ -322,6 +348,7 @@ FROM previous_mtd, mtd;
 
 
 ````
+**Answer**The Month-to-Month average interest rate growth stands at 3.47%
 
 
 ### Debt to Income Rate
@@ -335,7 +362,7 @@ SELECT AVG(dti) * 100 AS Avg_dti
 	FROM [dbo].[bank_loan]
 
 ````
-
+**Answer**The average Debt-to-Income rate is 13.33%.
 
 **Month to Date Debt to Income Rate**
 
@@ -348,6 +375,8 @@ WHERE issue_date >= DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FR
   AND issue_date < DATEADD(MONTH, DATEDIFF(MONTH, 0, (SELECT MAX(issue_date) FROM [portfolio].[dbo].[bank_loan])) + 1, 0);
 
 ````
+**Answer**The Month-to-Date Debt-to-Income rate is 13.67%.
+
 **Month to Month Debt to Income Rate growth**
 
 Objective: Tracking Month-over-Month (MoM) Debt-to-Income (DTI) Ratio growth helps Liberty Bank measure changes in borrowers' debt burden relative to income, identify trends in financial health, and evaluate lending policy effectiveness to mitigate risk and ensure responsible lending.
@@ -375,6 +404,7 @@ SELECT
 FROM previous_mtd, mtd;
 
 ````
+**Answer**The Month-to-Month Debt-to-Income rate growth is 2.73%.
 
 ## GOOD AND BAD LOAN METRICS
 good loan is characterized by a status of "fully paid" or "current," indicating that the borrower is meeting their repayment obligations promptly. Conversely, a bad loan is defined as having a status of "charged off," signifying that the lender has deemed the loan uncollectible and has written it off as a loss.
@@ -395,6 +425,8 @@ SELECT COUNT(*) AS Good_loan_Applicant
 
 ````
 
+**Answer**The number of good loan applicants stands at 33,243.
+
 **Good loan Total Amount Loaned**
 
 Objective: Tracking the Good Loan Total Amount Loaned helps Liberty Bank evaluate its lending success, identify trends in loan performance, and ensure a healthy loan portfolio.
@@ -406,6 +438,8 @@ SELECT SUM(loan_amount) AS Good_loan_Total_Amount_Loaned
 	WHERE loan_status IN ('Fully Paid','Current');
 
 ````
+
+**Answer**The total amount loaned to good loan applicants is 370,224,850.
 
 **Good loan Total Amount Received**
 
@@ -419,6 +453,8 @@ SELECT SUM(total_payment) AS Good_loan_Total_payment
 
 ````
 
+**Answer**The total amount received from good loan applicants is 435,786,170.
+
 **Good loan Average Interest Rate**
 
 Objective: Tracking the Good Loan Average Interest Rate helps Liberty Bank set competitive and profitable borrowing costs.
@@ -430,6 +466,10 @@ SELECT Avg(int_rate)*100 AS Good_loan_Average_interest
 	WHERE loan_status IN ('Fully Paid','Current');
 
 ````
+
+**Answer**The average interest rate for good loan applicants is 11.76%.
+
+
 **Good loan Average Debt to Income Rate**
 
 Objective: Tracking the Good Loan Average Debt-to-Income (DTI) Rate helps Liberty Bank assess reliable borrowers' financial health and ensure responsible lending.
@@ -440,6 +480,9 @@ SELECT Avg(dti)*100 AS Good_loan_Average_dti
 	FROM [dbo].[bank_loan]
 	WHERE loan_status IN ('Fully Paid','Current');
 
+````
+
+**Answer**The average Debt-to-Income rate for good loan applicants is 13.22%.
 
 
 ## Bad Loan Metrics
@@ -457,6 +500,7 @@ SELECT COUNT(*) AS Bad_loan_Applicant
  
 
 ````
+**Answer** The number of bad loan applicants is 5,333.
 
 **Bad loan Total Amount Loaned**
 
@@ -467,7 +511,12 @@ Objective: Tracking the Bad Loan Total Amount Loaned helps Liberty Bank assess n
 SELECT SUM(loan_amount) AS Bad_loan_Total_Amount_Loaned
 	FROM [dbo].[bank_loan]
 	WHERE loan_status NOT IN ('Fully Paid','Current');
+
+
 ````
+
+**Answer** The total amount loaned to bad loan applicants is 65,532,225.
+
 
 **Bad loan Total Amount Received**
 
@@ -481,6 +530,9 @@ SELECT SUM(total_payment) AS Bad_loan_Total_payment
 
 ````
 
+**Answer** The total amount received from bad loan applicants is 37,284,763.
+
+
 **Bad loan Average Interest Rate**
 
 Objective: Tracking the Bad Loan Average Interest Rate helps Liberty Bank understand and mitigate high-risk lending costs
@@ -492,6 +544,10 @@ SELECT Avg(int_rate)*100 AS Bad_loan_Average_interest
 	WHERE loan_status NOT IN ('Fully Paid','Current');
 
 ````
+
+**Answer** The average interest rate for bad loan applicants is 13.88%.
+
+
 **bad loan Average Debt to Income Rate**
 
 Objective: Tracking the Bad Loan Average Debt-to-Income (DTI) Rate helps Liberty Bank manage risk by assessing high-risk borrowers' financial stability.
@@ -503,6 +559,8 @@ SELECT Avg(dti)*100 AS Bad_loan_Average_dti
 	WHERE loan_status NOT IN ('Fully Paid','Current');
 
 ````
+
+**Answer** The average Debt-to-Income rate for bad loan applicants is 14.00%
 
 
 ## Loan Status
@@ -526,7 +584,7 @@ SELECT
 ## State
 
 
-Objective: The objective of tracking the state is to categorize and analyze loans based on their geographic location. This helps Liberty Bank understand regional trends, tailor lending strategies to specific areas, and address localized risks or opportunities.
+Objective: Tracking the state is to categorize and analyze loans based on their geographic location. This helps Liberty Bank understand regional trends, tailor lending strategies to specific areas, and address localized risks or opportunities.
 
 ````sql
 SELECT 
@@ -541,15 +599,18 @@ ORDER BY Total_Loan_Applications DESC
 ````
 
 
-*Answer*
+**Answer**
 
-California leads with the highest total loan applications at 6,894, nearly double that of the second-highest state, New York, which has 3,701 applications. California also tops the charts with the highest total money loaned, amounting to 78,484,125, followed by New York at 42,077,050. Furthermore, California received the highest total amount at 83,901,234, with New York in second place at 46,108,181. On the other end of the spectrum, Maine has the lowest loan applications at 3, with a total money loaned of 9,200 and a total money received of 10,808.
+California has the highest total loan applications at 6,894, nearly double that of the second-highest state, New York, which has 3,701 applications. California also tops the charts with the highest total money loaned, amounting to 78,484,125, followed by New York at 42,077,050. Furthermore, California received the highest total amount at 83,901,234, with New York in second place at 46,108,181. On the other end of the spectrum, Maine has the lowest loan applications at 3, with a total money loaned of 9,200 and a total cash received of 10,808.
+
+
 
 ## Term
 
 Objective: Tracking the loan term helps Liberty Bank understand the duration over which different loans are repaid. This enables the bank to manage cash flows, assess the risk associated with different loan durations, and tailor lending products to meet the needs of various customer segments.
 
 ````sql
+
 SELECT 
 	term AS Term, 
 	COUNT(id) AS Total_Loan_Applications,
@@ -558,12 +619,13 @@ SELECT
 FROM [dbo].[bank_loan]
 GROUP BY term
 ORDER BY Total_Loan_Applications DESC
-
-```
+````
 
 **Answer**
 
 There are two loan terms: 36 months and 60 months. The 36-month term had a total of 28,237 loan applications, while the 60-month term had 10,339 applications. In terms of total money loaned, the 36-month term accounted for 273,041,225, whereas the 60-month term amounted to 162,715,850. Regarding total money received, the 36-month term garnered 294,709,458, while the 60-month term received 178,361,475
+
+
 
 ## Purpose
 
