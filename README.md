@@ -1,9 +1,10 @@
-# Data Exploration and Visualization
+# Data Exploration and Visualization of Liberty Bank Loan
 
-## Liberty Bank Loan
 
 ##  Table of Contents
+- [Liberty Bank Loan](#liberty-bank-loan)
 - [Business Task](#business-task)
+- [Data Source](#data-source)
 - [Methodology](#methodology)
 - [Data Exploration](#data-exploration)
 - [Visualization](#visualization)
@@ -22,7 +23,7 @@ Liberty Bank is a reputable financial institution that empowers individuals and 
 To effectively monitor and assess our bank's lending activities and performance, we must create a comprehensive Bank Loan Report. This report will provide critical insights into key loan-related metrics and their changes over time, supporting data-driven decisions, tracking the health of our loan portfolio, and identifying trends to inform our lending strategies.
 
 
-## Key Performance Indicators (KPIs) Requirements:
+### Key Performance Indicators (KPIs) Requirements:
 
 1. Total Loan Applications: Calculate the total number of loan applications received during a specified period. Monitor the Month-to-Date (MTD) Loan Applications and track Month-over-Month (MoM) changes.
 
@@ -38,23 +39,23 @@ This structured report will equip us with the necessary information to ensure ou
 
 ## Data Source
 
-Financial Loan data: The primary data used for this analysis"Financial_loan.csv" file, contains detailed information about each sale made by the company
+Financial Loan data: The primary data used for this analysis "Financial_loan.csv" file, contains detailed information about each sale made by the company
 
 ## Methodology
 
-- Data Importation: Import datasets into SQL Server for comprehensive analysis.
+- Data Importation: The dataset were imported into a storage which allowed me do comprehensive analysis, in this case the preferred storage i used was microsoft sql server because of the structureed query language it offers, others can be used like My SQL
 
-- Exploring Loan Data: Generate various analytics and insights based on loan application data and borrower profiles.
+- Exploring Loan Data: Generate various analytics and insights based on loan application data and borrower profiles based on the key metrics provided in the business task.
 
-- Analyzing Loan Applications: Assess trends and patterns in loan applications over time.
+- Analyzing Loan Applications: Assess trends of the loan applications and  their patterns  over time.
 
-- Tracking Funded Amounts: Evaluate the trends in the total funded amount and analyze Month-to-Date (MTD) and Month-over-Month (MoM) changes.
+- Tracking Funded Amounts of the Borrowers : Evaluate the trends in the total funded amount and analyze Month-to-Date (MTD) and Month-over-Month (MoM) changes.
 
-- Monitoring Amounts Received: Track the total amount received from borrowers and assess cash flow patterns.
+- Monitoring Amounts Received from the Borrowers : Track the total amount received from borrowers and assess cash flow patterns For the bank.
 
-- Calculating Average Interest Rates: Determine average interest rates across all loans, MTD, and MoM variations.
+- Calculating Average Interest Rates: Determine average interest rates across all loans From the bank , Month-to-date (MTD), and Month over Month (MoM) variations.
 
-- Evaluating Average Debt-to-Income Ratio (DTI): Compute the average DTI for borrowers, MTD, and MoM fluctuations to gauge financial health.
+- Evaluating Average Debt-to-Income Ratio (DTI): Compute the average DTI for borrowers,Month-to-date (MTD), and Month over Month (MoM) fluctuations to gauge financial health of the borrowers.
 
 - Advanced SQL Techniques: Utilize a range of SQL techniques including:
 
@@ -113,7 +114,7 @@ Financial Loan data: The primary data used for this analysis"Financial_loan.csv"
 20.  Loan Amount: Total borrowed sum. Banks determine loan size.
  
 
-### Data Exploration
+
 
 ### Loan Application Metrics
 
