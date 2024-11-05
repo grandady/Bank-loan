@@ -43,19 +43,19 @@ Financial Loan data: The primary data used for this analysis "Financial_loan.csv
 
 ## Methodology
 
-- Data Importation: The dataset were imported into a storage which allowed me do comprehensive analysis, in this case the preferred storage i used was microsoft sql server because of the structureed query language it offers, others can be used like My SQL
+- Data Importation: The datasets were imported into a storage which allowed me do a comprehensive analysis, in this case, the preferred storage I used was a Microsoft SQL server because of the structured query language it offers, others can be used like My SQL
 
 - Exploring Loan Data: Generate various analytics and insights based on loan application data and borrower profiles based on the key metrics provided in the business task.
 
 - Analyzing Loan Applications: Assess trends of the loan applications and  their patterns  over time.
 
-- Tracking Funded Amounts of the Borrowers : Evaluate the trends in the total funded amount and analyze Month-to-Date (MTD) and Month-over-Month (MoM) changes.
+- Tracking Funded Amounts of the Borrowers: Evaluate the trends in the total funded amount and analyze Month-to-Date (MTD) and Month-over-Month (MoM) changes.
 
-- Monitoring Amounts Received from the Borrowers : Track the total amount received from borrowers and assess cash flow patterns For the bank.
+- Monitoring Amounts Received from the Borrowers: Track the total amount received from borrowers and assess cash flow patterns For the bank.
 
-- Calculating Average Interest Rates: Determine average interest rates across all loans From the bank , Month-to-date (MTD), and Month over Month (MoM) variations.
+- Calculating Average Interest Rates: Determine average interest rates across all loans From the bank, Month-to-date (MTD), and Month-over-month (MoM) variations.
 
-- Evaluating Average Debt-to-Income Ratio (DTI): Compute the average DTI for borrowers,Month-to-date (MTD), and Month over Month (MoM) fluctuations to gauge financial health of the borrowers.
+- Evaluating Average Debt-to-Income Ratio (DTI): Compute the average DTI for borrowers, Month-to-date (MTD), and Month-over-month (MoM) fluctuations to gauge the financial health of the borrowers.
 
 - Advanced SQL Techniques: Utilize a range of SQL techniques including:
 
