@@ -1,5 +1,8 @@
 # Data Exploration and Visualization of Liberty Bank Loan
 
+![Loan icon illustration](https://github.com/user-attachments/assets/88bf8001-aa99-4226-8874-e14d7e50a04d)
+
+
 
 ##  Table of Contents
 - [Liberty Bank Loan](#liberty-bank-loan)
@@ -114,7 +117,9 @@ Financial Loan data: The primary data used for this analysis "Financial_loan.csv
 20.  Loan Amount: Total borrowed sum. Banks determine loan size.
  
 
+## Exploration Data Analysis(EDA)
 
+[sql file link](https://github.com/grandady/Bank-loan/blob/main/SQl%20bank%20loan%20querry.sql)
 
 ### Loan Application Metrics
 
