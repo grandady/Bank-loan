@@ -43,6 +43,7 @@ This structured report will equip us with the necessary information to ensure ou
 ## Data Source
 
 Financial Loan data: The primary data used for this analysis "Financial_loan.csv" file, contains detailed information about each sale made by the company
+[data link](https://github.com/grandady/Bank-loan/blob/main/financial_loan.csv)
 
 ## Methodology
 
@@ -768,7 +769,7 @@ The primary purpose for loan collection is debt consolidation, which accounts fo
 ![overviewss](https://github.com/user-attachments/assets/c3425fd8-5b0a-4910-999d-7a5c1de28bd8)
 
 **This dashboard provides a comprehensive overview of bank loan performance**
-
+[dashboard overview link](https://public.tableau.com/app/profile/kosemani.babajide/viz/Bankloan2_17275613700840/overview)
 
 
 
@@ -777,7 +778,7 @@ The primary purpose for loan collection is debt consolidation, which accounts fo
 
 
 **This dashboard provides a comprehensive summary of bank loan performance**
-
+[dashboard summary link](https://public.tableau.com/app/profile/kosemani.babajide/viz/Bankloan_17275613156420/summary)
 
 
 
