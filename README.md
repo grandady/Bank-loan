@@ -36,9 +36,9 @@ To effectively monitor and assess our bank's lending activities and performance,
 
 4. Average Interest Rate: Calculate the average interest rate across all loans. Monitor the MTD average interest rate and track MoM variations to gain insights into the overall cost of our lending portfolio.
 
-5. Average Debt-to-Income Ratio (DTI): Evaluate the average DTI for our borrowers to gauge their financial health. Compute the MTD average DTI and track MoM fluctuations.
+5. Average Debt-to-Income Ratio (DTI): Evaluate our borrowers' average DTI to gauge their financial health. Compute the MTD average DTI and track MoM fluctuations.
 
-This structured report will equip us with the necessary information to ensure our lending practices are effective and sustainable.
+This structured report will equip us with the information to ensure our lending practices are effective and sustainable.
 
 ## Data Source
 
@@ -71,7 +71,7 @@ Financial Loan data: The primary data used for this analysis "Financial_loan.csv
 
     - SQL Window Functions for advanced calculations.
 
-- Data Visualization in Tableau: Create intuitive visualizations and dashboards to represent findings and facilitate data-driven decision-making.
+- Data Visualization with Power BI: Create intuitive visualizations and dashboards to represent findings and facilitate data-driven decision-making.
 
   ## Data Exploration
   
@@ -766,19 +766,19 @@ The primary purpose for loan collection is debt consolidation, which accounts fo
 
 
 
-![overviewss](https://github.com/user-attachments/assets/c3425fd8-5b0a-4910-999d-7a5c1de28bd8)
-
-**This dashboard provides a comprehensive overview of bank loan performance**
-[dashboard overview link](https://public.tableau.com/app/profile/kosemani.babajide/viz/Bankloan2_17275613700840/overview)
-
-
-
-
-![summaryyyy](https://github.com/user-attachments/assets/d41c0032-3932-4f11-bfe9-1a73e3284efe)
-
-
 **This dashboard provides a comprehensive summary of bank loan performance**
-[dashboard summary link](https://public.tableau.com/app/profile/kosemani.babajide/viz/Bankloan_17275613156420/summary)
+![bank loan summary](https://github.com/user-attachments/assets/4442f57a-fe6a-4978-8218-2a0a0d45d193)
+
+
+**This dashboard d provides a comprehensive overview of bank loan performance**
+
+![bank loan overview](https://github.com/user-attachments/assets/b029a4a6-6a41-4769-956c-e0a528c204da)
+
+
+**This dashboard d provides a comprehensive Grid view  of bank loan Applicants**
+![bank loan grid view](https://github.com/user-attachments/assets/0687b06b-b174-4c89-9db4-17b689f6cd28)
+
+
 
 
 
